@@ -1,0 +1,29 @@
+*{
+	margin:0;
+	padding:0;
+}
+header{
+	width:100vw;
+	background: #ddd;
+}
+.brand > h1{
+	color:#1F1F1F;
+	text-align:center;
+	padding: 10px 0;
+}
+.menu > nav > ul{
+	text-align:center;
+	padding:20px 0;
+}
+.menu > nav > ul > li{
+	display:inline;
+}
+.menu > nav > ul > li > a{
+	color:#ffff;
+	background:#F80868;
+	padding:10px 15px;
+}
+.menu > nav > ul > li > a:hover{
+	color:#F80868;
+	background:#ffffff;
+}

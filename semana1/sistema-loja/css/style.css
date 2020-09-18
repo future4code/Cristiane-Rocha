@@ -1,0 +1,198 @@
+*{
+	margin:0;
+	padding:0;
+}
+/*Pagina Inicial*/
+header{
+	width:100vw;
+	background: #ddd;
+}
+.brand > h1{
+	color:#1F1F1F;
+	text-align:center;
+	padding: 10px 0;
+}
+.brand >  h1 > em{
+	color:#F80868;
+}
+.brand > p{
+	text-align:center;
+	font-size:19px;
+}
+.menu > nav > ul{
+	text-align:center;
+	padding:20px 0;
+}
+.menu > nav > ul > li{
+	display:inline;
+}
+.menu > nav > ul > li > a{
+	color:#ffff;
+	background:#F80868;
+	padding:10px 15px;
+}
+.menu > nav > ul > li > a:hover{
+	color:#F80868;
+	background:#ffffff;
+}
+.container{
+	width:90%;
+	margin:0 auto;
+}
+.container > h2{
+	text-align: center;
+	color:#F80868;
+	padding: 20px 0;
+	font-size:35px;
+}
+.container > .content{
+	background: #646363;
+	margin:20px 0;
+	padding:20px  0;
+}
+.container > .content > h3{
+	text-align:center;
+	padding:20px 0;
+	color:#ffffff;
+	font-size:25px;
+}
+.container > .content > img{
+	display:block;
+	margin: 10px auto;
+}
+footer{
+	width:100vw;
+	height:80px;
+	background: #ddd;
+}
+.social{
+	text-align: center;
+}
+.social > p{
+	display:block;
+	font-size:20px;
+	padding: 10px 20px;
+}
+.social > .social-icons img{
+	display: inline-block;
+	width:25px;
+	height:auto;
+	margin: 0 10px;
+}
+
+/*Controle de Estoque*/
+.container > .estoque{
+	display:block;
+	width:90%;
+	margin:10px auto;
+}
+.container > .estoque  .desc{
+	background: #646363;
+}
+.container > .estoque  .desc th{
+	color:#ffffff;
+	padding:10px;
+	font-size:20px;
+}
+.container > .estoque img{
+	display:block;
+	width:200px;
+	height:auto;
+	margin:10px;
+}
+.container > .estoque  tr{
+	background:#ddd;
+}
+.container > .estoque td{
+	text-align:center;
+	font-size:18px;
+	padding: 0 10px;
+	color:#646363;
+}
+.container > .estoque .produto{
+	color:#F80868;
+}
+
+/*Adcionar Produtos*/
+
+.container > form{
+	background:#646363;
+	margin:20px 0;
+	padding:20px 0;
+}
+.container > form > div > label{
+	color:#ffffff;
+	display:inline-block;
+	font-size:25px;
+	padding:10px;
+}
+.container > form > div > input{
+	display:block;
+	width:95%;
+	height:40px;
+	margin-left:2%;
+	background:transparent;
+	border:2px solid #ffffff;
+	color:#ffffff;
+
+}
+.container > form > .add-price{
+	display:inline-block;
+	width:45%;
+}
+.container > form > .add-qtd{
+	display:inline-block;
+	width:45%;
+	margin-left:7%;
+}
+.container > form > .form-add{
+	display:block;
+	text-align:right;
+}
+.container > form > .form-add > button{
+	padding:10px 20px;
+	margin:20px 15px;
+	font-size:18px;
+	color:#ffffff;
+	background:#F80868;
+	border:none;
+}
+.container > form > .form-add > button:hover{
+	color:#F80868;
+	background:#ffffff;
+}
+
+/*Funcionarios*/
+/*Controle de Estoque*/
+.container > .funcionarios{
+	display:block;
+	width:90%;
+	margin:10px auto;
+}
+.container > .funcionarios  .desc{
+	background: #646363;
+}
+.container > .funcionarios  .desc th{
+	color:#ffffff;
+	padding:10px 72px;
+	font-size:20px;
+}
+.container > .funcionarios img{
+	display:block;
+	width:200px;
+	height:auto;
+	margin:10px;
+}
+.container > .funcionarios  tr{
+	background:#ddd;
+}
+.container > .funcionarios td{
+	text-align:center;
+	font-size:18px;
+	padding: 10px;
+	color:#646363;
+}
+.container > .funcionarios .name-func{
+	color:#F80868;
+}
+
