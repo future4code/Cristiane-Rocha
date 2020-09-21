@@ -7,6 +7,7 @@
 * {
     margin: 0;
     padding: 0;
+    border:0;
 }
 
 h1 {
@@ -118,6 +119,9 @@ td button {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+}
+.container-do-search input{
+  border-bottom:1px solid #000;
 }
 .container-do-search img{
   display:inline-block;
