@@ -9,7 +9,7 @@
     padding: 0;
 }
 
-h2 {
+h1 {
     background-color: #fe7e02;
     padding: 10px 5px 10px 5px;
     color: white;
@@ -34,7 +34,7 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    background: transparent;
 }
 
 .botao-amarelo {
@@ -119,7 +119,11 @@ td button {
     margin-top: 20px;
     height: 100px;
 }
-
+.container-do-search img{
+  display:inline-block;
+  width:20px;
+  height:20px;
+}
 
 #back-button {
     background-color: white;
