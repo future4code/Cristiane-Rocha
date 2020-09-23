@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size:1.2em;
+}
+#main-container{
+    width:100vw;
+    position: relative;
+}
+#top-container{
+    height:50px;
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+}
+.green-background {
+    background-color: green;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.yellow-background {
+    background-color: yellow;
+    display: grid;
+    align-items:center;
+    justify-content: center;
+}
+
+.pink-background {
+    background-color: fuchsia;
+    width:100%;
+    height:500px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+#middle-container{
+    width:100%;
+    height:250px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    justify-content: space-between;
+}
+#content2{
+    height:100%;
+}
+.blue-background {
+    background-color: blue;
+    width: 100%;
+    height:100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+#vertical-middle-container{
+    height:100%;
+
+}
+#image{
+    height:50%;
+}
+.red-background {
+    background-color: red;
+    height:100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+#extra{
+    height:50%;
+}
+.lightgreen-background {
+    background-color: lightgreen;
+    height:100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.purple-background {
+    background-color: purple;
+    height:50px;
+    width:100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
