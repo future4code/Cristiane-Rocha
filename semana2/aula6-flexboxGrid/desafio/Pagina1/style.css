@@ -78,6 +78,230 @@ header input{
 	width:100vw;
 	padding: 0 10%;
 	display:grid;
-	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr;
 	grid-gap:10px;
+	margin-top:20px;
+}
+.sidebar-1 .content-sidebar-1{
+	border:2px solid #ccc;
+	box-shadow:2px 2px 5px #ccc;
+}
+.sidebar-1 ul li {
+	list-style:none;
+	display: block;
+	padding: 10px;
+	font-weight: 800;
+}
+.sidebar-1 ul li:first-child{
+	color:#989898;
+	text-decoration: underline;
+}
+.sidebar-1 ul li:last-child{
+	background:#ccc;
+	width:101%;
+	margin-bottom:-3px;
+	height:45px;
+	display: flex;
+	align-items: center;
+	margin-top:-13px;
+	position: relative;
+	z-index: 5;
+}
+.content .menu ul{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.content .menu ul li{
+	display: block;
+	list-style: none;
+	padding: 0 10px;
+	margin:10px;
+	height:20px;
+}
+.content .menu ul li a{
+	color:#000;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 1000;
+}
+.content .menu ul li:first-child{
+	background-color:#CED1F8;
+	border:1px solid #453DDD;
+	box-shadow:3px 3px 1px #453DDD;
+	padding: 2px 10px;
+	height:25px;
+}
+.content .menu ul li:nth-child(2){
+	border-left:2px solid #ccc;
+}
+.content .menu ul li:last-child{
+	border-left:2px solid #ccc;
+}
+.main-item{
+	border:1px solid #ccc;
+	margin-top: 10px;
+}
+.imgs-content{
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	justify-content: center;
+	align-items: center;
+	padding: 0 10px 0;
+	width:90%;
+	margin:0 auto;
+}
+.imgs-content .item-img{
+	text-align: center;
+	height:150px;
+	margin: 0 10px;
+}
+.imgs-content img{
+	width:100%;
+	height:100px;
+		border:1px solid #E115AF;
+}
+.imgs-content p{
+	font-weight: 800;
+	padding:5px 0;
+	font-size:1.2em;
+}
+.imgs-content .item-img:nth-child(1) p{
+	color: #E115AF;
+}
+.imgs-content .item-img:nth-child(2) p,
+.imgs-content .item-img:nth-child(4) p,
+.imgs-content .item-img:nth-child(5) p{
+	color: #CD0E9E;
+}
+.imgs-content .item-img:nth-child(3) p{
+	color:#647BEE;
+}
+.imgs-content .item-img:nth-child(6) p{
+	color:#E0DE35;
+}
+.imgs-content .item-img:nth-child(7) p{
+	color:#20DE44;
+}
+.imgs-content .item-img:nth-child(8) p{
+	color:#DE3620;
+}
+.content-content{
+	display: block;
+	border-top:1px solid #ccc;
+	margin-top:-25px;
+	background-color:#fff;
+	position: relative;
+	z-index: 5;
+}
+.content-content h2{
+	font-size:2.5em;
+	padding:10px;
+	font-family:Arial;
+	font-weight: 600;
+}
+.main-content{
+	display:grid;
+	grid-template-columns:1fr 10fr;
+	align-items: center;
+	width:95%;
+	margin:0 auto;
+}
+.main-content p:nth-child(2){
+	color:#656363;
+	font-weight: 800;
+	font-size:1.3em;
+}
+.main-content p{
+	grid-column:2;
+	line-height: 1em;
+}
+.main-content p:nth-child(3){
+	font-size:1.1em;
+}
+.main-content  img{
+	width:50px;
+	grid-row:1/3;
+}
+.main-footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.icons-1,
+.icons-2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding:10px;
+}
+.icons-1 span{
+	padding:10px;
+	display: flex;
+	align-items: center;
+	color: #656363;
+	font-size:1.2em;
+	font-weight:800;
+}
+.icons-1 .fa-heart{
+	width:25px;
+	height:25px;
+	border:1px solid #000;
+	border-radius:12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color:red;
+	position: relative;
+	background-color: #fff;
+	box-shadow: 3px 2px 3px #000;
+	margin-right:10px;
+}
+
+.fa-comment-alt{
+	margin-right:10px;
+}
+.icons-2 button{
+	background:#2F2FB9;
+	text-transform: uppercase;
+	border-radius:2px;
+	color:#fff;
+	padding:5px;
+	margin: 0 0 0 10px;
+}
+.sidebar2 .content-sidebar2{
+	border:1px solid #2F2FB9;
+	box-shadow:4px 4px 1px #2F2FB9;
+	position: relative;
+}
+.sidebar2 .content-sidebar2 h3{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #2F2FB9;
+	width:100%;
+	height:50px;
+	color:#fff;
+	font-size:1em;
+}
+.buttons{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width:90%;
+	margin:20px auto;
+}
+.sidebar2 .content-sidebar2 button{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+	height:50px;
+	border-radius:25px;
+	background:#E6E6FB;
+	border:3px solid #2F2FB9;
+	margin:10px 0;
+	color:#000;
+	font-weight: 900;
 }
