@@ -1,5 +1,5 @@
 let textoTarefa = document.getElementById('tarefa')
-let semana = document.querySelectorAll('.semana')
+let semana = document.querySelectorAll('.semana div')
 
 
 
@@ -18,22 +18,22 @@ function criarTarefa(){
 	}else{
 		switch(alteraOpcao()){
 			case "domingo":
-				semana[0].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
+				semana[0].innerHTML += `<li class="item-lista" onclick="riscaTarefa(this)">${textoTarefa.value}</li>`
 			break;
 			case "segunda":
-				semana[1].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
+				semana[1].innerHTML += `<li class="item-lista" onclick="riscaTarefa(this)">${textoTarefa.value}</li>`
 			break;
 			case "terca":
-				semana[2].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
+				semana[2].innerHTML += `<li class="item-lista" onclick="riscaTarefa(this)">${textoTarefa.value}</li>`
 			break;
 			case "quarta":
-				semana[3].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
+				semana[3].innerHTML += `<li class="item-lista" onclick="riscaTarefa(this)">${textoTarefa.value}</li>`
 			break;
 			case "quinta":
-				semana[4].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
+				semana[4].innerHTML += `<li class="item-lista" onclick="riscaTarefa(this)">${textoTarefa.value}</li>`
 			break;
 			case "sexta":
-				semana[5].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
+				semana[5].innerHTML += `<li class="item-lista" onclick="riscaTarefa(this)">${textoTarefa.value}</li>`
 			break;
 			case "sabado":
 				semana[6].innerHTML += `<li class="item-lista">${textoTarefa.value}</li>`
@@ -42,4 +42,13 @@ function criarTarefa(){
 		textoTarefa.value = ""
 	}
 	}
+
+	function riscaTarefa(element){
+		element.style = "text-decoration: line-through;color:red;"
+	}
 	
+	function limparTarefas(){
+		for(let i=0;i<semana.length;i++){
+			semana[i].innerHTML = "";
+		}
+	}
