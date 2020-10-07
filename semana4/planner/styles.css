@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header label{
+    text-transform: uppercase;
+    color:#840AA7;
+    font-weight:700;
+}
+header input{
+    border: 1px solid #840AA7;
+    border-radius:10px;
+    color:#840AA7;
+    height:30px;
+    margin: 0 10px 0 5px;
+}
+header  select{
+    border: 1px solid #840AA7;
+    border-radius:10px;
+    color:#840AA7;
+    height:30px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+header  select:focus,
+header input:focus{
+    outline: none;
+}
+header button{
+    background:#840AA7;
+    color:#fff;
+    text-transform: uppercase;
+    height:30px;
+    margin: 0 10px;
+    padding:0 15px;
+    border:none;
+    border-radius:10px;
+    cursor: pointer;
+}
+section {
+    display: flex;
+    justify-content: space-evenly;
+    height: 90vh;
+}
+
+.semana {
+    border: 1px solid #840AA7;
+    width: 14%;
+    padding: 5px;
+}
+.semana h3{
+    text-transform: uppercase;
+    color:#840AA7;
+    font-weight: 900;
+    text-align:center;
+}
+.semana .item-lista{
+    padding:5px;
+    text-align: center;
+    border-bottom: 1px solid #840AA7;
+    color:#524C4C;
+    font-weight:700;
+    list-style: none;
+    cursor:pointer;
+}
+#limpa-tarefas{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    color:#fff;
+    background: red;
+    border-radius:10px;
+    padding: 10px;
+}
+#limpa-tarefas:focus{
+    outline: none;
+}
