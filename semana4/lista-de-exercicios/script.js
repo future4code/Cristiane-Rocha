@@ -195,3 +195,82 @@ alertFuture4()
  }
  document.write(`Venha assistir ao filme ${meuFilmeFavorito.titulo}, de ${meuFilmeFavorito.ano}, dirigido por ${meuFilmeFavorito.diretor} e estrelado por ${meuFilmeFavorito.atores}`)
  console.log((`Venha assistir ao filme ${meuFilmeFavorito.titulo}, de ${meuFilmeFavorito.ano}, dirigido por ${meuFilmeFavorito.diretor} e estrelado por ${meuFilmeFavorito.atores}`))
+
+ //Exercicio 04
+ //nome, idade, email e endereco
+
+ let pessoa = {
+ 	nome: "Ana Batriz",
+ 	idade: 25,
+ 	email:"anabeatriz@email.com",
+ 	endereco: "Rua da casa dela, numero 00, Bairro: logo ali"
+ }
+ function anonimizarPessoa(object){
+ 	let pessoaAnonima = {
+ 		...object,
+ 		nome: "ANONIMO"
+ 	}
+ 	return pessoaAnonima
+ }
+ console.log(anonimizarPessoa(pessoa))
+
+ //Exercícios de Funções de array
+
+ //exercicio 01
+ let pessoas = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+function retornaAdultos(array){
+	let soAdultos = array.filter((pessoa)=>{
+		return pessoa.idade >= 20
+	})
+	return soAdultos
+}
+
+function retornaCriancas(array){
+	let soCriancas = array.filter((pessoa)=>{
+		return pessoa.idade < 20
+	})
+	return soCriancas
+}
+console.log(retornaCriancas(pessoas))
+console.log(retornaAdultos(pessoas))
+
+// Exercicio 02
+const array = [1, 2, 3, 4, 5, 6]
+
+//a)
+function multiplicaPorDois(array){
+	let multiplicado = array.map((item)=>{
+		return item * 2
+	})
+	return multiplicado
+}
+console.log(multiplicaPorDois(array))
+
+//b)
+function multiplicaPorTresToString(array){
+	let porTresString = array.map((item)=>{
+		return String(item * 3)
+	})
+	return porTresString
+}
+console.log(multiplicaPorTresToString(array))
+
+//c)
+function parOuImpar(array){
+	let parImpar = array.map((item)=>{
+		if(item % 2 === 0){
+			return `${item} é par`
+		}else{
+			return `${item} é impar`
+		}
+	})
+	return parImpar
+}
+console.log(parOuImpar(array))
+
+//Exercicio 03
