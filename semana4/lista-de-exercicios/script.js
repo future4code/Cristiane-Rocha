@@ -160,3 +160,38 @@ const alertFuture4 = () => {
 	alert("Hello Future4")
 }
 alertFuture4()
+
+//Exercícios de Objetos
+
+//Exercicio 01
+ /*
+ *
+ Resposta: Objetos são como objetos na vida real, que tem suas utilidades e caracteristicas, usamos objetos para armazenar e ultilizar dados, como por exemplo dados de um cadastro.
+ *
+ */
+ 
+ //Exercicio 02
+ function criaRetangulo(lado1,lado2){
+ 	let retangulo = {
+ 		largura: lado1,
+ 		altura: lado2,
+ 		perimetro: 2 * (lado1 + lado2),
+ 		area: (lado1 * lado2)
+ 	}
+ 	return retangulo
+ }
+
+ console.log(criaRetangulo(52,35))
+
+ //Exercicio 03
+ //título, ano, diretor e atores/atrizes (lista com pelo menos 2 atores/atrizes)
+ //Venha assistir ao filme NOME DO FILME, de ANO, dirigido por DIRETOR e estrelado por ATOR 1, ATRIZ 2, ATOR n
+
+ let meuFilmeFavorito = {
+ 	titulo:"The Notebook (Diário de uma paixão)",
+ 	ano: 2004,
+ 	diretor: "Nick Cassavetes",
+ 	atores:["Rachel McAdams","Ryan Gosling","James Garner","James Marsden","Gena Rowlands"]
+ }
+ document.write(`Venha assistir ao filme ${meuFilmeFavorito.titulo}, de ${meuFilmeFavorito.ano}, dirigido por ${meuFilmeFavorito.diretor} e estrelado por ${meuFilmeFavorito.atores}`)
+ console.log((`Venha assistir ao filme ${meuFilmeFavorito.titulo}, de ${meuFilmeFavorito.ano}, dirigido por ${meuFilmeFavorito.diretor} e estrelado por ${meuFilmeFavorito.atores}`))
