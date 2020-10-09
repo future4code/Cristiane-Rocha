@@ -117,26 +117,37 @@ console.log("A diferença entre eles é: " + diferencaNumeros(numero1,numero2))
 function verificaSegundo(array){
 	let menor = Infinity
 	let maior = 0
+	let indiceMaior = 0
+	let indiceMenor = 0
 	let maiorValor = 0
-	let menorValor = 0
+	let menorValor = Infinity
 
-	array.forEach((item)=>{
+	array.forEach((item,ind)=>{
 		if(item>maior){
 			maior = item
+			indiceMaior = ind
 		}else if(item<menor){
 			menor = item
+			indiceMenor = ind
 		}
 	})
-	array.forEach((item)=>{
-		if(item < maior){
-			if(item > maiorValor){
-				maiorValor = item
-			}
-		}else if(item > menor){
-				menorValor = item
+
+	console.log(maior,menor)
+
+	 array.splice(indiceMaior, 1);
+	 array.splice(indiceMenor, 1);
+
+	array.forEach((item,ind)=>{
+		if(item>maiorValor){
+			maiorValor = item
+			indiceMaior = ind
+		}else if(item<menorValor){
+			menorValor = item
+			indiceMenor = ind
 		}
 	})
 	console.log(maiorValor,menorValor)
+
 }
 
 let arrayNumeros = [56,32,23,210,365,2,14,32,39,25,21,36,198,215,125,12,36,10,32]
