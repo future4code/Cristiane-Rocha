@@ -32,7 +32,7 @@ function App() {
           option="Endereço: "
         />
       </div>
-      <h2>Alguns projetos que participei ou desenvolvi.</h2>
+      <h2>Alguns projetos que participei ou desenvolvi!</h2>
       <div className="page-section-container">
         <CardGrande
           imagem="https://image.freepik.com/vetores-gratis/campanha-de-icone-de-cartao-bancario-de-credito-de-debito-transacao-sem-dinheiro-para-o-modelo-de-pouso-de-pagina-inicial-do-site-web-com-estilo-cartoon_197170-398.jpg"
