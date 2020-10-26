@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "4e8c637f-d3c3-4cc8-a040-24ca08614ca5",
+		"name": "API Labefy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hinos da Harpa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "Cria as playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPlaylists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						""
+					]
+				},
+				"description": "Mostra os dados"
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Girassol\", \r\n    \"artist\": \"Priscila Alcantara\",\r\n    \"url\": \"https://deezer.page.link/tgxSDJV44psRJaUv9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/0503efe1-8e0a-4662-b628-8db1136ae50f/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"0503efe1-8e0a-4662-b628-8db1136ae50f",
+						"tracks"
+					]
+				},
+				"description": "Adciona musicas a playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/0f1b7419-1896-4ef5-9219-2fc11eed25fc/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"0f1b7419-1896-4ef5-9219-2fc11eed25fc",
+						"tracks"
+					]
+				},
+				"description": "Recebe cada playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "searchPlaylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=Voz",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Voz"
+						}
+					]
+				},
+				"description": "Busca Playlist favorita"
+			},
+			"response": []
+		},
+		{
+			"name": "removeTrackFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/0f1b7419-1896-4ef5-9219-2fc11eed25fc/tracks/604ec73d-9070-44b5-9b31-56b0ec75c04b",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"0f1b7419-1896-4ef5-9219-2fc11eed25fc",
+						"tracks",
+						"604ec73d-9070-44b5-9b31-56b0ec75c04b"
+					]
+				},
+				"description": "Remove miusica da playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "cristiane-da-rocha-dumont",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/d80adc0b-de10-4d03-b017-c98c99eb2593?playlistId=d80adc0b-de10-4d03-b017-c98c99eb2593",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"d80adc0b-de10-4d03-b017-c98c99eb2593"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "d80adc0b-de10-4d03-b017-c98c99eb2593"
+						}
+					]
+				},
+				"description": "Remove a PlayList"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
