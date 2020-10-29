@@ -3,133 +3,21 @@ import axios from 'axios'
 import Styled from 'styled-components'
 import UsuarioImg from '../../img/usuarios.jpg'
 import DetalheUsuario from '../Usuarios/DetalheUsuario'
-
-
-const UsuarioDiv = Styled.div`
-	width: 100vw;
-	height:100vh;
-	background-image: url(${UsuarioImg});
-	background-size:cover;
-	background-repeat:no-repeat;
-	display:flex;
-	flex-direction: column;
-	justify-content:flex-start;
-	align-items:center
-`;
-
-const UsuarioTabela = Styled.div`
-	width:90%;
-	height:auto;
-	display:block;
-	position:relative;
-`;
-const UsuarioHead = Styled.div`
-	width:100%;
-	height:40px;
-	display:flex;
-	justify-content:space-around;
-	align-items:center;
-	position:relative;
-`;
-const UsuarioHeadCol1 = Styled.div`
-	background:#888;
-	border: 1px solid #888;
-	text-transform:uppercase;
-	color: #fff;
-	width:calc(68% - 20px);
-	height:100%;
-	display:flex;
-	align-items:center;
-	padding: 0 10px;
-	justify-content:space-between;
-`;
-const UsuarioHeadCol2 = Styled.div`
-	background:#888;
-	border: 1px solid #888;
-	text-transform:uppercase;
-	color: #fff;
-	width:28%;
-	height:100%;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-`;
-const UsuarioTbody = Styled.div`
-	width:100%;
-`;
-const UsuarioTr = Styled.div`
-	width:100%;
-	height:40px;
-	display:flex;
-	justify-content:space-around;
-	align-items:center;
-	position:relative;
-`;
-const UsuarioTh1 = Styled.div`
-	border: 1px solid #888;
-	text-transform:uppercase;
-	color: #888;
-	width:calc(68% - 20px);
-	height:100%;
-	display:flex;
-	align-items:center;
-	justify-content:space-between;
-	padding: 0 10px;
-	background:#fff;
-`;
-const UsuarioTh2 = Styled.div`
-	border: 1px solid #888;
-	text-transform:uppercase;
-	color: #888;
-	width:28%;
-	height:100%;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	background:#fff;
-`;
-const UsuarioDeleteButton = Styled.button`
-	background:transparent;
-	border:none;
-	text-transform:uppercase;
-	color:red;
-	font-size:25px;
-	cursor:pointer;
-	&:focus{
-		outline:none;
-	}
-	&:hover{
-		color:orange;
-	}
-`;
-const UsuarioH2 = Styled.h2`
-	color: #888;
-	text-transform:uppercase;
-	text-align:center;
-	padding:20px 0;
-	font-size:30px;
-`;
-const UsuariosCenter = Styled.div`
-	background:#ffffff90;
-	margin-top:20px;
-	box-shadow: 2px 2px 5px #888;
-	width:70%;
-	display:flex;
-	flex-direction:column;
-	justify-content:center;
-	align-items:center;
-	padding-bottom:30px;
-`;
-const UsuarioSpan = Styled.span`
-	color: #2aaa7e;
-	font-weight:700;
-	font-size:20px;
-	cursor:pointer;
-	text-align:center;
-	&:hover{
-		color:#17efa4;
-	}
-`;
+import Busca from '../Usuarios/Busca'
+import {ButtonVoltar} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuariosCenter} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioH2} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioDeleteButton} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioTh2} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioSpan} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioTh1} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioTr} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioTbody} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioDiv} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioTabela} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioHead} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioHeadCol1} from '../Usuarios/Estilos/StyleUsuario'
+import {UsuarioHeadCol2} from '../Usuarios/Estilos/StyleUsuario'
 
 
 class Usuarios extends React.Component{
@@ -137,21 +25,27 @@ class Usuarios extends React.Component{
 		listaDeUsuarios:[],
 		detalhesUsuario:'',
 		showDetalhesUsuario:false,
-		editarNome:true,
-		botaoEditarNome:true,
-		editarEmail:true,
-		botaoEditarEmail:true
+		editarUsuario:false,
+		buscarNome: '',
+		listaDeBusca:'',
+		exibirUsuarioEncontrado:false
 	}
 
 	componentDidMount = () => {
 		this.exibeUsuarios()
 	}
-	exibeUsuarios = () => {
-		axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",{
+
+	// Headers e Url Api
+	headers = {
 			headers: {
 				Authorization: "cristiane-da-rocha-dumont"
 			}
-		}).then((resposta) => {
+	}
+	urlApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users'
+
+	//função que exibe usuarios
+	exibeUsuarios = () => {
+		axios.get(this.urlApi,this.headers).then((resposta) => {
 			this.setState({
 				listaDeUsuarios: resposta.data
 			})
@@ -161,29 +55,24 @@ class Usuarios extends React.Component{
 
 	}
 
+	//Funçao Deleta Usuário
 	deletarUsuario = (iD) => {
-		const confirmaExclusao = window.confirm("Tem certeza que deseja deletar esse usuário? ")
-		if(confirmaExclusao){
-			axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${iD}`,{
-			headers: {
+		if(window.confirm("Tem certeza que deseja deletar esse usuário? ")){
+			axios.delete(`${this.urlApi}/${iD}`,{headers: {
 				Authorization: "cristiane-da-rocha-dumont",
 				id:iD
-			}
-			}).then((resposta) => {
+			}}).then((resposta) => {
 				alert("Usuario deletado com sucesso!")
-				console.log(resposta)
 			}).catch((error) => {
 				console.log(error)
 			})
 		}
 		this.setState({showDetalhesUsuario:false})
 	}
+
+	//Função que atualiza lista de usuario após alterações
 	componentDidUpdate = () => {
-		axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",{
-			headers: {
-				Authorization: "cristiane-da-rocha-dumont"
-			}
-		}).then((resposta) => {
+		axios.get(this.urlApi,this.headers).then((resposta) => {
 			this.setState({
 				listaDeUsuarios: resposta.data
 			})
@@ -192,8 +81,9 @@ class Usuarios extends React.Component{
 		})
 	}
 
+	//Função que abre detalhe de cada usuário
 	openDetalhes = (iD) => {
-		axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${iD}`,{
+		axios.get(`${this.urlApi}/${iD}`,{
 			headers: {
 				Authorization: "cristiane-da-rocha-dumont",
 				id:iD
@@ -211,73 +101,109 @@ class Usuarios extends React.Component{
 		})
 		this.setState({showDetalhesUsuario:true})
 	}
+
+	//Função que fecha o componente com detalhes do Usuario
 	fecharDetalhes = () => {
-		this.setState({showDetalhesUsuario:false})
+		this.setState({showDetalhesUsuario:false,exibirUsuarioEncontrado:false})
 	}
-	abrirEditarNome = () => {
-		this.setState({
-			editarNome:false,
-			botaoEditarNome:false
-		})
+
+	//Função que abre edição do usuario
+	editarUsuario = () => {
+		this.setState({editarUsuario:true})
 	}
-	abrirEditarEmail = () => {
-		this.setState({
-			editarEmail:false,
-			botaoEditarEmail:false
-		})
-		console.log('chegou aqui')
+
+	//Funções de input controlado para Nome e Email
+	mudarEmail = (event) => {
+		this.setState({detalhesUsuario:{
+											email:event.target.value,
+											name:this.state.detalhesUsuario.name,
+											id:this.state.detalhesUsuario.id
+										}})
 	}
 	mudarNome = (event) => {
-		if(this.state.editarNome === false){
-			this.setState({detalhesUsuario:{
-			nome: event.target.value
-		}})
-		}		
+		this.setState({detalhesUsuario:{
+											email:this.state.detalhesUsuario.email,
+											name:event.target.value,
+											id:this.state.detalhesUsuario.id
+										}})
 	}
-	mudarEmail = (event) => {
-		if(this.state.editarEmail === false){
-			this.setState({detalhesUsuario:{
-			email: event.target.value
-		}})
-		}		
-	}
-	salvarNome = (iD) => {
-		console.log("Cris")
-		const body = {
-			name: this.state.detalhesUsuario.nome,
-			email: this.state.detalhesUsuario.email
-		}
-		console.log(body,iD)
-		axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users//${iD}`,body,{
-		headers: {
-			Authorization: "cristiane-da-rocha-dumont",
-			id:iD
-		}
-		}).then((resposta) => {
-			alert("Usuario Salvo com sucesso!")
-			console.log(resposta)
-		}).catch((error) => {
-			alert("deu erro")
-			console.log(error)
+
+	//Função para salvar alterações do usuário
+	salvarUsuario = () => {
+		console.log("o id é: "+ this.state.detalhesUsuario.id + " o nome editado é " + this.state.detalhesUsuario.name + "o email é: " + this.state.detalhesUsuario.email  )
+
+		if(window.confirm(`Deseja alterar para nome: ${this.state.detalhesUsuario.name} e email: ${this.state.detalhesUsuario.email} ?`)){
+			let body = {
+			name:this.state.detalhesUsuario.name,
+			email:this.state.detalhesUsuario.email
+			}
+			axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${this.state.detalhesUsuario.id}`,body,{
+				headers: {
+					Authorization: "cristiane-da-rocha-dumont",
+					id:this.state.detalhesUsuario.id
+				}
+			}).then((resposta) => {
+				alert("Dados do usuário alterados com sucesso")
+			}).catch((error) => {
+				console.log("Este Erro aqui",error)
 		})
+		}
+				this.setState({editarUsuario:false})
+	}
+
+	//Função Cancelar Edição
+	cancelarEditar = () => {
+		this.setState({editarUsuario:false})
+	}
+
+	/*Busca*/
+	//Input controlado Busca
+	inputControladoBusca = (event) => {
+		this.setState({buscarNome: event.target.value})
+	}
+	//Função que realiza a busca
+	buscaNome = () => {
+		console.log(this.state.buscarNome)
+		axios.get(`${this.urlApi}/search?name=${this.state.buscarNome}`,this.headers).then((resposta) => {
+				console.log(resposta.data[0].name)
+				this.atualizaLista(resposta.data[0].id)
+			}).catch((error) => {
+				alert("Verifique se você digitou nome completo corretamente")
+				console.log("Este Erro aqui ->",error)
+
+		})
+	}
+
+	//Função que abre o usuario pesquisado
+	atualizaLista = (id) => {
+		axios.get(`${this.urlApi}/${id}`,this.headers).then((resposta) => {
+				console.log(resposta.data)
+				this.setState({listaDeBusca:resposta.data,exibirUsuarioEncontrado:true})
+			}).catch((error) => {
+				console.log("Este Erro aqui",error)
+		})	
+			this.setState({buscarNome:''})
 
 	}
+
+	//renderização do conteúdo na tela
 	render(){
+		let arrayUsuarios = ''
 		let usuarioDetalhes = ''
+		let buttonVoltar = ''
+		
 		if(this.state.showDetalhesUsuario === true){
 			usuarioDetalhes = <DetalheUsuario
 								nomeDoUsuario={this.state.detalhesUsuario.name}
 								emailDoUsuario={this.state.detalhesUsuario.email}
 								botaoDeletar={() => this.deletarUsuario(this.state.detalhesUsuario.id) }
 								fecharDetalhes={this.fecharDetalhes}
-								editarNome={this.state.editarNome}
-								abrirEditarNome={this.abrirEditarNome}
-								abrirEditarEmail={this.abrirEditarEmail}
-								mudarNome={this.mudarNome}
+								editarUsuario={this.editarUsuario}
+								usuarioEditar={this.state.editarUsuario}
 								mudarEmail={this.mudarEmail}
-								mudarBotaoNome={this.state.botaoEditarNome}
-								mudarBotaoEmail={this.state.botaoEditarEmail}
-								salvarNome={() => this.salvarNome(this.state.detalhesUsuario.id) }
+								mudarNome={this.mudarNome}
+								salvarUsuario={this.salvarUsuario}
+								cancelarEditar={this.cancelarEditar}
 							  />
 		}
 
@@ -289,8 +215,23 @@ class Usuarios extends React.Component{
 				</UsuarioTr>
 			)
 		})
+
+		if(this.state.exibirUsuarioEncontrado === false){
+			arrayUsuarios = usuarios
+		}else{
+			arrayUsuarios = <UsuarioTr key={this.state.listaDeBusca.id}>
+								<UsuarioTh1>{this.state.listaDeBusca.name}<UsuarioSpan onClick={() => this.openDetalhes(this.state.listaDeBusca.id)}> + </UsuarioSpan></UsuarioTh1>
+								<UsuarioTh2><UsuarioDeleteButton onClick={() => this.deletarUsuario(this.state.listaDeBusca.id)}> x </UsuarioDeleteButton></UsuarioTh2>
+							</UsuarioTr>
+			buttonVoltar = <ButtonVoltar onClick={this.fecharDetalhes}>voltar</ButtonVoltar>
+		}
 		return(
 			<UsuarioDiv>
+			<Busca
+				inputControladoBusca={this.inputControladoBusca}
+				nomeABuscar={this.state.buscarNome}
+				buscaNome={this.buscaNome}
+			/>
 				<UsuariosCenter>
 				    <UsuarioH2>Usuários Cadastrados </UsuarioH2>
 				    {usuarioDetalhes}
@@ -300,7 +241,8 @@ class Usuarios extends React.Component{
 								<UsuarioHeadCol2>Deletar Usuario</UsuarioHeadCol2>
 							</UsuarioHead>
 						<UsuarioTbody>
-							{usuarios}
+							{arrayUsuarios}
+							{buttonVoltar}
 						</UsuarioTbody>
 					</UsuarioTabela>
 				</UsuariosCenter>
