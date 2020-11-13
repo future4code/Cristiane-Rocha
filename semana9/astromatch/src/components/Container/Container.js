@@ -32,6 +32,7 @@ const MainContainer = Styled.section`
 	box-shadow:2px 2px 5px #ccc;
 	position:relative;
 `;
+//Componente
 
 function Container(){
 
