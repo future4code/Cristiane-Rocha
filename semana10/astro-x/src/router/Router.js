@@ -3,9 +3,10 @@ import {Switch,Route,BrowserRouter} from 'react-router-dom'
 import ListTripsPage from '../screens/ListTripsPage/ListTripsPage'
 import HomePage from '../screens/HomePage/HomePage'
 import LoginPage from '../screens/LoginPage/LoginPage'
-import TripDetailsPage from '../screens/TripDetailsPage/TripDetailsPage'
 import ListTripsPrivatePage from '../screens/ListTripsPrivatePage/ListTripPrivatePage'
 import TripDetailsPrivatePage from '../screens/TripDetailsPrivatePage/TripDetailsPrivatePage'
+import CreateTripPage from '../screens/CreateTripPage/CreateTripPage'
+import ApplyToTripPage from '../screens/ApplyToTripPage/ApplyToTripPage'
 
 const Router = () => {
 
@@ -29,15 +30,17 @@ const Router = () => {
 						<LoginPage/>
 					</Route>
 					<Route exact path="/trips/create">
-						<div>Criar Viagens</div>
-					</Route>
-					<Route exact path="/trips/details/:id">
-						<TripDetailsPage/>
+						<CreateTripPage/>
 					</Route>
 					<Route exact path="/trips/detailsPrivate/:id">
 						<TripDetailsPrivatePage/>
 					</Route>
-					
+					<Route exact path="/trips/createTripPage">
+						<div>Criar Viagem </div>
+					</Route>
+					<Route exact path="/trips/apllyToTrip/:id/:name">
+						<ApplyToTripPage/>
+					</Route>
 					<Route>
 						<div>Erro 404.</div>
 					</Route>

@@ -5,8 +5,9 @@ import {useHistory} from 'react-router-dom'
 
 const HomePage = () => {
 	const history = useHistory()
+	const token = localStorage.getItem('token')
 	const goToLoginPage = () => {
-		history.push('/login')
+		token ? history.push('trips/listPrivate') : history.push('/login')
 	}
 	const goToListTrip = () => {
 		history.push('/trips/list')

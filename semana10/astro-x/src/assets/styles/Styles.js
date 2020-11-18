@@ -29,6 +29,12 @@ export const TitleContentTrips = Styled.h2`
 	border-bottom:1px solid #ccc;
 	width:95%;
 	text-transform:uppercase;
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	span{
+		color:red;
+	}
 `;
 export const ItemsTrips = Styled.div`
 	display:grid;
@@ -102,7 +108,7 @@ export const ContainerColumn = Styled.div`
 	top:0;
 	left:0;
 	background:#fff;
-	padding:20px;
+	padding:40px 20px 20px ;
 	box-sizing:border-box;
 	border-right:1px solid #ccc;
 `;
@@ -197,6 +203,17 @@ export const Input = Styled.input`
 		outline:none;
 	}
 `;
+export const Textarea = Styled.input`
+	width:100%;
+	height:100px;
+	border-radius:5px;
+	border:1px solid #888;
+	color:#888;
+	padding-left:10px;
+	&:focus{
+		outline:none;
+	}
+`;
 export const ItemsDetails = Styled.div`
 	display:flex;
 	justify-content:center;
@@ -220,3 +237,47 @@ export const Text = Styled.p`
 	padding:10px;
 	height:150px;
 `;
+export const Menu = Styled.ul`
+	width:102%;
+	height:50px;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	margin:-10px -10px 0 -5px;
+	padding: 0 40px 0 20px;
+	box-sizing:border-box;
+	box-shadow: 2px 2px 5px #ccc;
+	margin-bottom:20px;
+	position:fixed;
+	top:0;
+	left:0;
+	background:#ffffff;
+`;
+export const MenuItem = Styled.li`
+	list-style:none;
+	cursor:pointer;
+	color:#888;
+	padding-top:10px;
+	text-transform:uppercase;
+`;
+export const SvgHome = Styled.svg`
+	fill:red;
+	&:hover{
+		fill:blue;
+	}
+`;
+export const SvgBack = Styled.svg`
+	fill:blue;
+	&:hover{
+		fill:red;
+	}
+`;
+export const DivDetailsTrip = Styled.div`
+	width:95%;
+	height:100px;
+	margin:10px auto;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+`;
+export const ItemDetailsTrip = Styled.div``;

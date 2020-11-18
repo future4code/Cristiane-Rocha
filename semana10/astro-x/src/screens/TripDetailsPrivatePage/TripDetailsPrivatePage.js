@@ -1,15 +1,16 @@
 import React from 'react'
 import {Container,ContentHome,ButtonRight} from '../../assets/styles/Styles'
-import SideColumn from '../../components/SideColumn/SideColumn'
+import SideColumnPrivate from '../../components/SideColumn/SideColumnPrivate'
 import DetailsTrip from '../../components/DetailsTrip/DetailsTripPrivate'
+import Header from '../../components/Header/Header'
 
 const TripDetailsPrivatePage = () => {
 	return(
 			<Container>
-				<SideColumn/>
+				<SideColumnPrivate/>
 				<ContentHome>
+					<Header/>
 					<DetailsTrip/>
-					<ButtonRight> Inscrever-se </ButtonRight>
 				</ContentHome>
 			</Container>
 		)

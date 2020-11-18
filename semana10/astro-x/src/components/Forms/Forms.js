@@ -1,13 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Formulario,Label,Input} from '../../assets/styles/Styles'
 
-const Forms = () => {
+const Forms = (props) => {
+	
 	return(
 					<Formulario action="/action_page.php" method="get">
 						<Label>Email: </Label>
-						<Input type="email"/>
+						<Input value={props.email} onChange={props.inputEmail} type="email"/>
 						<Label>Senha: </Label>
-						<Input type="password"/>
+						<Input value={props.password} onChange={props.inputPassword} type="password"/>
 					</Formulario>
 		)
 }
