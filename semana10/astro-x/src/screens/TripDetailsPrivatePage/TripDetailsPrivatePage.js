@@ -4,6 +4,7 @@ import SideColumnPrivate from '../../components/SideColumn/SideColumnPrivate'
 import DetailsTrip from '../../components/DetailsTrip/DetailsTripPrivate'
 import Header from '../../components/Header/Header'
 
+
 const TripDetailsPrivatePage = () => {
 	return(
 			<Container>

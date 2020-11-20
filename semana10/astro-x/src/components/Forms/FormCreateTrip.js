@@ -1,20 +1,49 @@
 import React,{useState} from 'react'
-import {Formulario,Label,Input,Textarea} from '../../assets/styles/Styles'
+import {Formulario,ButtonRight,Label,Input,Textarea} from '../../assets/styles/Styles'
+import {useForm} from '../hooks/useForm'
+import axios from 'axios'
+import {useHistory} from 'react-router-dom'
 
 const FormCreateTrip = (props) => {
-	
+	const [form,onChange] = useForm({name:'',planet:'',date:'',durationInDays:'',description:''})
+	const history = useHistory()
+
+		const createTrip = () => {
+			const body = {
+				name: form.name,
+			    planet: form.planet,
+			    date: form.date,
+			    description: form.description,
+			    durationInDays: form.durationInDays
+			}
+			const header = {
+				headers: {
+					auth: localStorage.getItem('token')
+				}
+			}
+			axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/cristiane-rocha/trips',body,header)
+			.then((res) => {
+				alert("Viagem Criada !")
+				history.push('/trips/create')
+			})
+			.catch((err) => {
+				console.log(err.message)
+			})
+		}
+
 	return(
-					<Formulario action="/action_page.php" method="get">
+					<Formulario onSubmit={createTrip}>
 						<Label>Nome da Viagem: </Label>
-						<Input value={props.name} onChange={props.changeName} type="text"/>
+						<Input value={form.name} name={'name'} onChange={onChange} type="text"/>
 						<Label>Destino: </Label>
-						<Input value={props.planet} onChange={props.changePlanet} type="text"/>
+						<Input value={form.planet} name={'planet'} onChange={onChange} type="text"/>
 						<Label>Data: </Label>
-						<Input value={props.date} onChange={props.changeDate} type="date"/>
+						<Input value={form.date} name={'date'} onChange={onChange} type="date"/>
 						<Label>Duração em dias: </Label>
-						<Input value={props.durationInDays} onChange={props.changeDurationInDays} type="number"/>
+						<Input value={form.durationInDays} name={'durationInDays'} onChange={onChange} type="number"/>
 						<Label>Descrição: </Label>
-						<Textarea value={props.description} onChange={props.changeDescription}></Textarea>
+						<Textarea value={form.description} name={'description'} onChange={onChange}></Textarea>
+						<ButtonRight>Login</ButtonRight>
 					</Formulario>
 		)
 }

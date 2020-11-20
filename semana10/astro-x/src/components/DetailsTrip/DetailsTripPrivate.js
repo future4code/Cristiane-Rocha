@@ -1,101 +1,110 @@
 import React,{useEffect,useState} from 'react'
 import {useRequestApiWidthHeaders} from '../API/Api'
 import {useHistory,useParams} from 'react-router-dom'
-import {ItemsDetails,DetailsDiv,TitleColumn,TitleContentTrips,Text,ButtonRight} from '../../assets/styles/Styles'
+import {ItemsDetails,CandItem,TitleContent,ButtonDiv,DetailsDiv,ButtonAprove,ButtonRight,NameItem,CanditateItem,CandidatesDiv,TitleColumn,TitleContentTrips,Text} from '../../assets/styles/Styles'
 import axios from 'axios'
 
 
 const DetailsTrip = () => {
 	const pathParams = useParams()
 	const myTripsDetails = useRequestApiWidthHeaders(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/cristiane-rocha/trip/${pathParams.id}`)
+	const token = localStorage.getItem('token')
+
 	const history = useHistory()
+
 	const mostrar = () => {
 		console.log(myTripsDetails.candidates)
 	}
 
-	const [body,setBody] = useState({})
+
 
 	const logout = () => {
 		localStorage.removeItem('token')
 		history.push('/login')
 	}
 
+	const aproveCandidate = (id) => {
+		const body = {"approve": true}
+		axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/cristiane-rocha/trips/${pathParams.id}/candidates/${id}/decide`,body,{
+			headers: {
+				auth:token
+			}
+		})
+		.then((res) => {
+			alert("Candidato Aprovado !") 
+			
+		})
+		.catch((err) => {
+			console.log(err.message)
+		})
+		
+	}
+
 	const candidates = myTripsDetails && myTripsDetails.candidates
 
-	const aproveCandidate = (id) => {
-		setBody({approve:true})
-		getDecideCandidate(id,body)
-	}
-	const reproveCandidate = (id) => {
-		setBody({approve:false})
-		getDecideCandidate(id,body)
+	const deleteTrip = () => {
+		axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/cristiane-rocha/trips/${pathParams.id}`)
+		.then((res) => {
+			alert("Viagem apagada!")
+			history.push('/trips/listPrivate')
+		})
+		.catch((err) => {
+			console.log(err)
+		})
 	}
 
-	const getDecideCandidate = (id,body) => {
-		const tripId = pathParams
-		const header = {
-			headers: {
-				auth: localStorage.getItem('token')
-			}
-		}
-			axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/cristiane-rocha/trips/${tripId}/candidates/${id}/decide`,body,header)
-			.then((res) => {
-				console.log(res)
-			})
-			.catch((err) => {
-				console.log(err.message)
-			})
-		}
 
 		return(
 		
 		<div>
+		<TitleContent>Viagem para {myTripsDetails.name}</TitleContent>
 			<ItemsDetails>
 				<DetailsDiv>
 					<p>Destino:</p>
-					<TitleColumn>{myTripsDetails.planet}</TitleColumn>
+					<h3>{myTripsDetails.planet}</h3>
 				</DetailsDiv>
 				<DetailsDiv>
 					<p>Data da Partida:</p>
-					<TitleColumn>{myTripsDetails.date}</TitleColumn>
+					<h3>{myTripsDetails.date}</h3>
 				</DetailsDiv>
 				<DetailsDiv>
 					<p>Duração:</p>
-					<TitleColumn>{myTripsDetails.durationInDays} dias</TitleColumn>
+					<h3>{myTripsDetails.durationInDays} dias</h3>
 				</DetailsDiv>
 			</ItemsDetails>
 			<div>
 				<div>
-					<TitleContentTrips>Candidatos <ButtonRight onClick={logout}>sair</ButtonRight></TitleContentTrips>
+					<TitleContentTrips><div><ButtonRight red onClick={logout}>sair</ButtonRight><ButtonRight onClick={deleteTrip}><i class="fas fa-trash-alt"></i> Apagar Viagem</ButtonRight></div> Candidatos ↴</TitleContentTrips>
 				</div>
 				<div>
 					{candidates != undefined ? 
 						candidates.map((cand) => {
 							return (
-										<div>
-											<div>
-												<div>Nome: </div>
-												<div>{cand.name}</div>
-											</div>
-											<div>
-												<div>Profissão: </div>
-												<div>{cand.profession}</div>
-											</div>
-											<div>
-												<div>Idade: </div>
-												<div>{cand.age}</div>
-											</div>
-											<div>
-												<div>País: </div>
-												<div>{cand.country}</div>
-											</div>
-											<div>
-												<div>Porque deveria ir: </div>
-												<div>{cand.applicationText}</div>
-											</div>
-											<button onClick={() => aproveCandidate(cand.id)}>Aprovar</button>
-											<button onClick={() => reproveCandidate(cand.id)}>Reprovar</button>
-										</div>
+										<CandidatesDiv key={cand.id}>
+											<CanditateItem>
+												<NameItem>Nome: </NameItem>
+												<CandItem>{cand.name}</CandItem>
+											</CanditateItem>
+											<CanditateItem>
+												<NameItem>Profissão: </NameItem>
+												<CandItem>{cand.profession}</CandItem>
+											</CanditateItem>
+											<CanditateItem>
+												<NameItem>Idade: </NameItem>
+												<CandItem>{cand.age}</CandItem>
+											</CanditateItem>
+											<CanditateItem>
+												<NameItem>País: </NameItem>
+												<CandItem>{cand.country}</CandItem>
+											</CanditateItem>
+											<CanditateItem>
+												<NameItem>Porque deveria ir: </NameItem>
+												<CandItem>{cand.applicationText}</CandItem>
+											</CanditateItem>
+											<ButtonDiv>
+												<ButtonAprove onClick={() => aproveCandidate(cand.id)} >Aprovar</ButtonAprove>
+											</ButtonDiv>
+										</CandidatesDiv>
 									)
 						}) 
 					: ''}
