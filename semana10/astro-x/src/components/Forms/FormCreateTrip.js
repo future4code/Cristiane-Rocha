@@ -8,7 +8,7 @@ const FormCreateTrip = (props) => {
 	const [form,onChange] = useForm({name:'',planet:'',date:'',durationInDays:'',description:''})
 	const history = useHistory()
 
-		const createTrip = () => {
+		const createTrip = (event) => {
 			const body = {
 				name: form.name,
 			    planet: form.planet,
@@ -23,17 +23,18 @@ const FormCreateTrip = (props) => {
 			}
 			axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/cristiane-rocha/trips',body,header)
 			.then((res) => {
-				alert("Viagem Criada !")
-				history.push('/trips/create')
+				alert("Viagem Criada com sucesso !")
+				history.push('/trips/listPrivate')
 			})
 			.catch((err) => {
 				console.log(err.message)
 			})
+			event.preventDefault()
 		}
 
 	return(
 					<Formulario onSubmit={createTrip}>
-						<Label>Nome da Viagem: </Label>
+						<Label>Nome: </Label>
 						<Input value={form.name} name={'name'} onChange={onChange} type="text"/>
 						<Label>Destino: </Label>
 						<Input value={form.planet} name={'planet'} onChange={onChange} type="text"/>
@@ -43,7 +44,7 @@ const FormCreateTrip = (props) => {
 						<Input value={form.durationInDays} name={'durationInDays'} onChange={onChange} type="number"/>
 						<Label>Descrição: </Label>
 						<Textarea value={form.description} name={'description'} onChange={onChange}></Textarea>
-						<ButtonRight>Login</ButtonRight>
+						<ButtonRight>Criar</ButtonRight>
 					</Formulario>
 		)
 }
