@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  overflow-x:hidden;
+  font-family: 'Montserrat Alternates', sans-serif !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.MuiInputBase-input{
+	color:red !important;
+}
